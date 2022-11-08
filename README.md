@@ -1,0 +1,1 @@
+# openvino2022_handson_basic

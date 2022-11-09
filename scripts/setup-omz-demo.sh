@@ -11,3 +11,4 @@ sudo apt -y install cmake build-essential libopencv-dev
 . openvino_2022/setupvars.sh
 chmod +x open_model_zoo/demos/build_demos.sh
 open_model_zoo/demos/build_demos.sh -b=./omz_demos_build
+cp -r omz_demos_build/intel64/Release/ omz_demos_bin

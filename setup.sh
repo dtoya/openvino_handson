@@ -1,10 +1,33 @@
 #!/bin/bash
+sudo apt update
+sudo apt -y install git python3-venv
 
-export HANDSON_ROOT=$PWD
+rm -rf $ARCHIVE_NAME.tgz* openvino_2022
+ARCHIVE_NAME=l_openvino_toolkit_ubuntu20_2022.2.0.7713.af16ea1d79a_x86_64
+wget https://storage.openvinotoolkit.org/repositories/openvino/packages/2022.2/linux/$ARCHIVE_NAME.tgz
+wget https://storage.openvinotoolkit.org/repositories/openvino/packages/2022.2/linux/$ARCHIVE_NAME.tgz.sha256
+sha256sum -c $ARCHIVE_NAME.tgz.sha256
+tar xvzf $ARCHIVE_NAME.tgz 
+mv $ARCHIVE_NAME openvino_2022
+rm -rf $ARCHIVE_NAME.tgz* 
 
-scripts/install-package.sh
-scripts/setup-igpu.sh
-scripts/install-devtools.sh
-scripts/setup-omz-demo.sh
-scripts/download-omz-models.sh
-scripts/download-media.sh
+sudo apt update
+sudo apt -y install curl
+sudo -E openvino_2022/install_dependencies/install_NEO_OCL_driver.sh
+sudo usermod -a -G video,render $USER
+
+mkdir venv
+sudo apt -y install python3-venv
+python3 -m venv venv/openvino
+. venv/openvino/bin/activate
+python -m pip install --upgrade pip
+pip install openvino
+pip install opencv-python
+pip install openvino-dev[tensorflow2,onnx,pytorch]
+deactivate
+
+for dir in omz-demo ov-api pot;
+do
+    cd $dir; ./setup.sh; cd ..
+done
+

@@ -1,1 +1,0 @@
-bin/image_processing_demo -i open_model_zoo/demos/image_processing_demo/cpp/assets/image_processing_street_640x360.png -m models/intel/single-image-super-resolution-1032/FP32/single-image-super-resolution-1032.xml -at sr 

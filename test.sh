@@ -1,5 +1,7 @@
 #!/bin/bash
-for dir in omz-demo ov-api pot;
+cd lesson
+for dir in `ls`;
 do
     cd $dir; ./test.sh; cd ..
 done
+cd ..

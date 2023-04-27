@@ -27,8 +27,10 @@ pip install opencv-python
 pip install openvino-dev[tensorflow2,onnx,pytorch]
 deactivate
 
-for dir in omz-demo ov-api pot;
+cd lesson
+for dir in `ls`;
 do
     cd $dir; ./setup.sh; cd ..
 done
+cd ..
 

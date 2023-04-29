@@ -1,7 +1,25 @@
-# OpenVINO Basic Sample
+# Hello Classification C++ Sample {#openvino_inference_engine_samples_hello_classification_README}
 
 This sample demonstrates how to do inference of image classification models using Synchronous Inference Request API.  
 Models with only one input and output are supported.
+
+The following C++ API is used in the application:
+
+| Feature | API | Description |
+| :--- | :--- | :--- |
+| OpenVINO Runtime Version | `ov::get_openvino_version` | Get Openvino API version |
+| Basic Infer Flow | `ov::Core::read_model`, `ov::Core::compile_model`, `ov::CompiledModel::create_infer_request`, `ov::InferRequest::set_input_tensor`, `ov::InferRequest::get_output_tensor`  | Common API to do inference: read and compile a model, create an infer request, configure input and output tensors |
+| Synchronous Infer | `ov::InferRequest::infer` | Do synchronous inference |
+| Model Operations | `ov::Model::inputs`, `ov::Model::outputs` | Get inputs and outputs of a model |
+| Tensor Operations | `ov::Tensor::get_shape` | Get a tensor shape |
+| Preprocessing | `ov::preprocess::InputTensorInfo::set_element_type`, `ov::preprocess::InputTensorInfo::set_layout`, `ov::preprocess::InputTensorInfo::set_spatial_static_shape`, `ov::preprocess::PreProcessSteps::resize`, `ov::preprocess::InputModelInfo::set_layout`, `ov::preprocess::OutputTensorInfo::set_element_type`, `ov::preprocess::PrePostProcessor::build` | Set image of the original size as input for a model with other input size. Resize and layout conversions are performed automatically by the corresponding plugin just before inference. |
+
+| Options | Values |
+| :--- | :--- |
+| Validated Models | [alexnet](@ref omz_models_model_alexnet), [googlenet-v1](@ref omz_models_model_googlenet_v1) |
+| Model Format | OpenVINO™ toolkit Intermediate Representation (\*.xml + \*.bin), ONNX (\*.onnx) |
+| Supported devices | [All](../../../docs/OV_Runtime_UG/supported_plugins/Supported_Devices.md) |
+| Other language realization | [C](../../../samples/c/hello_classification/README.md), [Python](../../../samples/python/hello_classification/README.md) |
 
 ## How It Works
 
@@ -99,4 +117,6 @@ classid probability
 ## See Also
 
 - [Integrate the OpenVINO™ Runtime with Your Application](../../../docs/OV_Runtime_UG/integrate_with_your_application.md)
-
+- [Using OpenVINO™ Toolkit Samples](../../../docs/OV_Runtime_UG/Samples_Overview.md)
+- [Model Downloader](@ref omz_tools_downloader)
+- [Model Optimizer](../../../docs/MO_DG/Deep_Learning_Model_Optimizer_DevGuide.md)

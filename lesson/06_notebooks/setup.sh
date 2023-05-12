@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get upgrade
+#sudo apt-get upgrade
 sudo apt-get -y install python3-venv build-essential python3-dev git-all
 sudo apt-get -y install jupyter
 python3 -m venv openvino_env

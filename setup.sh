@@ -14,7 +14,7 @@ sudo -E openvino_2022/install_dependencies/install_openvino_dependencies.sh
 
 sudo apt update
 sudo apt -y install curl
-sudo -E openvino_2022/install_dependencies/install_NEO_OCL_driver.sh
+sudo -E openvino_2022/install_dependencies/install_NEO_OCL_driver.sh -y
 sudo usermod -a -G video,render $USER
 
 mkdir venv

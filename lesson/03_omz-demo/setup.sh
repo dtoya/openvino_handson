@@ -3,7 +3,7 @@ sudo apt -y install python3-opencv
 python3 -m venv venv/omz_demo
 . venv/omz_demo/bin/activate
 pip install -U pip
-pip install openvino
+pip install openvino==2022.3.0
 pip install -r open_model_zoo/demos/requirements.txt
 pip install open_model_zoo/demos/common/python/
 deactivate

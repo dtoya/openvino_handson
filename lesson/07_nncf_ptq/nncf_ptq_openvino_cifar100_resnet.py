@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--max_drop', type=float, default=0.005)
     parser.add_argument('--subset_size', type=int, default=300)
     parser.add_argument('--download_only', default=False, action="store_true")
+    parser.add_argument('--offline', default=False, action="store_true")
     args = parser.parse_args()
 
     mean = (0.507, 0.4865, 0.4409)
@@ -73,12 +74,19 @@ def main():
             transforms.Normalize(mean, std) 
         ])
 
+    download=True
+    source="github"
+    path="chenyaofo/pytorch-cifar-models"
+    if args.offline:
+        download=False
+        source="local"
+        path=torch.hub.get_dir()+"/chenyaofo_pytorch-cifar-models_master/"
     dataset = CIFAR100(root=args.dataset_root+'/cifar100', train=False,
-                        transform=data_transform, download=True)
-    torch_model = torch.hub.load("chenyaofo/pytorch-cifar-models", args.model,
-                            pretrained=True, skip_validation=True)
+                        transform=data_transform, download=download)
+    torch_model = torch.hub.load(path, args.model,
+                        pretrained=True, skip_validation=True, source=source)
     if args.download_only:
-        return 
+        return
 
     dummy_input = torch.randn(1, 3, 32, 32)
     onnx_file = args.output+'/'+args.model+'.onnx'

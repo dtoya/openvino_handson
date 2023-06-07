@@ -1,1 +1,1 @@
-rm -rf result
+rm -rf result/*

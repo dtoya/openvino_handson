@@ -1,0 +1,84 @@
+INFO:nncf:NNCF initialized successfully. Supported frameworks detected: torch, openvino
+Files already downloaded and verified
+Using cache found in /home/tdsk/.cache/torch/hub/chenyaofo_pytorch-cifar-models_master
+Statistics collection: 100%|██████████████████████████████████████████████████████████████████████████| 300/300 [00:05<00:00, 50.63it/s]
+Biases correction: 100%|████████████████████████████████████████████████████████████████████████████████| 58/58 [00:00<00:00, 67.72it/s]
+Statistics collection: 100%|██████████████████████████████████████████████████████████████████████████| 300/300 [00:05<00:00, 52.80it/s]
+Biases correction: 100%|████████████████████████████████████████████████████████████████████████████████| 58/58 [00:00<00:00, 63.54it/s]
+INFO:nncf:Validation of initial model was started
+INFO:nncf:Elapsed Time: 00:00:09
+INFO:nncf:Metric of initial model: 0.7263
+INFO:nncf:Validation of quantized model was started
+INFO:nncf:Elapsed Time: 00:00:07
+INFO:nncf:Metric of quantized model: 0.7176
+INFO:nncf:Accuracy drop: 0.00869999999999993 (DropType.ABSOLUTE)
+INFO:nncf:Total number of quantized operations in the model: 86
+INFO:nncf:Ranking groups of quantizers was started
+INFO:nncf:The original metric will be used to rank quantizers
+INFO:nncf:Collecting metrics for each data item using an initial model
+INFO:nncf:Elapsed Time: 00:00:11
+INFO:nncf:Collecting metrics for each data item using a quantized model
+INFO:nncf:Elapsed Time: 00:00:07
+INFO:nncf:Calculating ranking score for groups of quantizers
+INFO:nncf:Elapsed Time: 00:02:01
+INFO:nncf:Changing the scope of quantizer nodes was started
+INFO:nncf:Reverted 1 operations to the floating-point precision: 
+	/conv1/Conv/WithoutBiases
+INFO:nncf:Accuracy drop with the new quantization scope is 0.007399999999999962 (DropType.ABSOLUTE)
+INFO:nncf:Reverted 2 operations to the floating-point precision: 
+	/layer2/layer2.0/downsample/downsample.0/Conv/WithoutBiases
+	/layer2/layer2.0/conv1/Conv/WithoutBiases
+INFO:nncf:Accuracy drop with the new quantization scope is 0.006099999999999994 (DropType.ABSOLUTE)
+INFO:nncf:Reverted 1 operations to the floating-point precision: 
+	/layer1/layer1.0/conv2/Conv/WithoutBiases
+INFO:nncf:Accuracy drop with the new quantization scope is 0.005999999999999894 (DropType.ABSOLUTE)
+INFO:nncf:Reverted 2 operations to the floating-point precision: 
+	/layer3/layer3.6/Add
+	/layer3/layer3.6/conv1/Conv/WithoutBiases
+INFO:nncf:Algorithm completed: achieved required accuracy drop 0.0042999999999999705 (DropType.ABSOLUTE)
+INFO:nncf:6 out of 86 were reverted back to the floating-point precision:
+	/conv1/Conv/WithoutBiases
+	/layer2/layer2.0/downsample/downsample.0/Conv/WithoutBiases
+	/layer2/layer2.0/conv1/Conv/WithoutBiases
+	/layer1/layer1.0/conv2/Conv/WithoutBiases
+	/layer3/layer3.6/Add
+	/layer3/layer3.6/conv1/Conv/WithoutBiases
+[ INFO ] Count:            34578 iterations
+[ INFO ] Duration:         15003.53 ms
+[ INFO ] Latency:
+[ INFO ]    Median:        2.29 ms
+[ INFO ]    Average:       2.56 ms
+[ INFO ]    Min:           1.27 ms
+[ INFO ]    Max:           37.08 ms
+[ INFO ] Throughput:   2304.66 FPS
+[ INFO ] Count:            86058 iterations
+[ INFO ] Duration:         15006.85 ms
+[ INFO ] Latency:
+[ INFO ]    Median:        0.86 ms
+[ INFO ]    Average:       1.01 ms
+[ INFO ]    Min:           0.49 ms
+[ INFO ]    Max:           33.43 ms
+[ INFO ] Throughput:   5734.58 FPS
+[ INFO ] Count:            71712 iterations
+[ INFO ] Duration:         15001.77 ms
+[ INFO ] Latency:
+[ INFO ]    Median:        1.01 ms
+[ INFO ]    Average:       1.21 ms
+[ INFO ]    Min:           0.55 ms
+[ INFO ]    Max:           27.72 ms
+[ INFO ] Throughput:   4780.23 FPS
+Model graph (xml):   0.163 Mb
+Model weights (bin): 3.279 Mb
+Model size:          3.442 Mb
+Model graph (xml):   0.390 Mb
+Model weights (bin): 0.835 Mb
+Model size:          1.225 Mb
+Model graph (xml):   0.377 Mb
+Model weights (bin): 0.962 Mb
+Model size:          1.339 Mb
+                    FP32     INT8(Basic)     INT8(Accuracy)   
+--------------------------------------------------------------
+Accuracy [%]     :   0.726   0.717 ( -1.0%)   0.722 ( -0.4%)
+Throughput [fps] :  2304.7  5734.6 (  2.5)   4780.2 (  2.1)
+Size [MB]        :     3.4     1.2 (  0.4)      1.3 (  0.4)
+

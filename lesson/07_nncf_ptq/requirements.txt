@@ -1,0 +1,4 @@
+openvino-dev==2022.3.0
+torchvision==0.14.1
+nncf[torch] @ git+https://github.com/openvinotoolkit/nncf.git@develop
+pycocotools
